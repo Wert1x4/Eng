@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover, interactive-widget=resizes-content">
+  <meta name="theme-color" content="#fbf7f1">
+  <meta name="color-scheme" content="light">
+  <meta name="format-detection" content="telephone=no">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-title" content="Lumen">
+  <meta name="apple-mobile-web-app-status-bar-style" content="default">
+  <title>Lumen</title>
+  <link rel="icon" href="icon.svg">
+  <link rel="apple-touch-icon" href="icon-180.png">
+  <link rel="manifest" href="manifest.webmanifest">
+  <link rel="stylesheet" href="css/app.css">
+  <style>html, body { background: #fbf7f1; }</style>
+</head>
+<body>
+  <div class="stage">
+    <div id="app" class="app"></div>
+    <aside class="phone-dock" id="phoneDock" hidden>
+      <div class="dock-card">
+        <p class="eyebrow" data-phone="kicker"></p>
+        <h2 data-phone="title"></h2>
+        <p class="dock-lead" data-phone="lead"></p>
+        <div class="qr-frame"><img id="phoneQr" alt="" width="190" height="190"></div>
+        <a class="phone-url" id="phoneUrl" href="#"></a>
+        <ol data-phone="steps"></ol>
+        <p class="dock-note" data-phone="note"></p>
+      </div>
+    </aside>
+  </div>
+  <script src="js/i18n.js"></script>
+  <script src="js/device.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>
