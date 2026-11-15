@@ -1,22 +1,49 @@
-# Open Language Profiles — English datasets from CEFR-J
+# Lumen
 
-This repository contains English profile datasets kindly provided by [the CEFR-J project](http://www.cefr-j.org/).
+Мобильное приложение для английского, уровни A1–C1. Объяснения и переводы есть на русском и на украинском: язык выбирается при входе и в профиле.
 
-This dataset contains the following files:
+## Как открыть
 
-* [CEFR-J Vocabulary Profile (ver 1.5)](https://github.com/openlanguageprofiles/olp-en-cefrj/blob/master/cefrj-vocabulary-profile-1.5.csv) — vocabulary list annotated with CEFR-J levels
-* [Octanove Vocabulary Profile C1/C2 (ver 1.0)](https://github.com/openlanguageprofiles/olp-en-cefrj/blob/master/octanove-vocabulary-profile-c1c2-1.0.csv) — vocabulary list annotated with CEFR-J levels (for C1/C2 levels), created by [Octanove Labs](http://www.octanove.com/)
-* [CEFR-J Grammar Profile (ver 20180315)](https://github.com/openlanguageprofiles/olp-en-cefrj/blob/master/cefrj-grammar-profile-20180315.csv) — grammatical item list annotated with CEFR-J levels (and a couple other frameworks)
+Дважды запусти `run.bat`. Откроется окно с адресом и браузер.
 
-Note that the Grammar Profile is only partially translated from the original Japanese version. We thank the CEFR-J project for providing the dataset.
+- На этом компьютере: http://127.0.0.1:8765/
+- На айфоне: включи ту же Wi‑Fi и выключи мобильный интернет. Справа на странице код на адрес `http://…:8765/`. В Safari нажми «Поделиться» → «На экран Домой». Пока занимаешься с айфона, окно `run.bat` на компьютере должно оставаться открытым. Если страница не открылась, один раз запусти `allow-phone.bat`.
 
-## Terms of use
+Нужен Python 3.10, который уже стоит на этом компьютере. Отдельные пакеты не нужны.
 
-CEFR-J vocabulary and grammar profile datasets can be used for research and commercial purposes with no charge, provided that you cite the dataset properly. The copyright belongs to Tono Laboratory at TUFS (Tokyo University of Foreign Studies). Neither CEFR-J nor Open Language Profiles is responsible or liable for any inaccuracies in the dataset or any damage resulting from using the dataset.
+## Публикация на Vercel
 
-The Octanove Vocabulary Profile for C1/C2 levels can be used under a [Creative Commons Attribution-ShareAlike 4.0 International License](https://creativecommons.org/licenses/by-sa/4.0/).
+Сайт для интернета — папка `web`. Vercel отдаёт её по HTTPS. Сервер Python и база `data` на хостинг не попадают: уроки и аккаунты работают в браузере.
 
-## References
+1. Запусти `publish.bat`, если менял уроки. Он обновит `web/pack.json`. Этот файл должен уехать на Vercel вместе с сайтом.
+2. На [vercel.com](https://vercel.com) создай проект из этой папки или из git-репозитория.
+3. Настройки уже лежат в `vercel.json`: сборка пустая, публикуется папка `web`. Если Vercel спросит сам, поставь Framework Preset: Other, Build Command пустой, Output Directory: `web`.
+4. После деплоя откроется адрес вида `https://имя.vercel.app/`. На телефоне: «Поделиться» → «На экран Домой» или «На главный экран». После первого открытия уроки работают без компьютера.
 
-* The CEFR-J Wordlist Version 1.5. Compiled by Yukio Tono, Tokyo University of Foreign Studies. Retrieved from http://www.cefr-j.org/download.html on 1/20/2020.
-* The CEFR-J Grammar Profile Version 20180315. Retrieved from http://www.cefr-j.org/download.html on 1/20/2020.
+Не загружай `data/lumen.db`, сертификаты и ключи. Учебные логины на опубликованном сайте те же, пароль `lumen2026`. Прогресс каждого человека хранится в его браузере.
+
+## Аккаунты
+
+Пароль у всех четырёх: `lumen2026`. В базе лежит только хеш.
+
+| Логин | Язык | Что внутри |
+| --- | --- | --- |
+| alex | русский | пройдено начало A1 |
+| ostap | украинский | пройдены два первых урока |
+| mira | украинский | новый ученик |
+| admin | русский | открыты все уроки |
+
+Свой аккаунт создаётся на экране регистрации. Логин — латиницей.
+
+База: `data/lumen.db`. Чтобы начать заново, закрой приложение, удали этот файл и запусти `run.bat` снова.
+
+## Что внутри курса
+
+Семь ступеней: A1, A2, A3, B1, B2, B3 и C1. В каждой 8 тем и 5 уроков: слова, фразы, сборка, грамматика, проверка. Урок засчитывается с 70%. Серия, опыт и кристаллы сохраняются в аккаунте. Ошибка не прерывает урок.
+
+Словарь собран из открытых списков:
+
+- A1–B2: CEFR-J Wordlist 1.5, Yukio Tono, Tokyo University of Foreign Studies
+- C1–C2: Octanove Vocabulary Profile 1.0, лицензия CC BY-SA 4.0
+
+C2 есть только в словаре. Учебный путь заканчивается на C1. Перевод есть у слов из уроков и у частого ядра; у редких слов списка CEFR перевода может не быть. Фразы уроков написаны для Lumen, это не текст Duolingo.
